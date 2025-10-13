@@ -6,22 +6,22 @@ export default function App() {
 
   const checkReadiness = async () => {
     setLoading(true);
-    const res = await fetch("http://localhost:5000/check-readiness");
+    const res = await fetch("https://stunning-spork-7wx96g76r4p3px4r-5000.app.github.dev/check-readiness");
     const data = await res.json();
     setResult(data);
     setLoading(false);
   };
 
   return (
-    <div style={{ fontFamily: "sans-serif", textAlign: "center", marginTop: "3rem" }}>
-      <h1>🚀 Agentic Release Readiness Dashboard</h1>
+    <div>
+      <h1 align="center">Agentic Release Readiness Dashboard</h1>
       <button
         onClick={checkReadiness}
         disabled={loading}
         style={{
           padding: "12px 24px",
           marginTop: "1rem",
-          background: "#2563eb",
+          background: "#561257",
           color: "white",
           border: "none",
           borderRadius: "8px",
