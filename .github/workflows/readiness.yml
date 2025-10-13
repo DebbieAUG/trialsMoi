@@ -1,0 +1,18 @@
+name: Agentic Readiness Check
+on: [push]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install --prefix backend
+
+      - name: Run Agentic Readiness
+        run: node backend/server.js & sleep 5 && curl http://localhost:5000/check-readiness

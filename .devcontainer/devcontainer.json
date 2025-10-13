@@ -1,0 +1,9 @@
+{
+  "name": "Agentic Full Stack Demo",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  "postCreateCommand": "npm install --prefix backend && npm install --prefix frontend",
+  "portsAttributes": {
+    "3000": { "label": "Frontend", "onAutoForward": "openPreview" },
+    "5000": { "label": "Backend", "onAutoForward": "notify" }
+  }
+}
