@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyDLF7yKMcMwovjoLwWkWbiPCMu_4iOyY9U"; // ⚠️ exposed (restrict it)
+const API_KEY = "AIzaSyBM34RbyinMO8ryEPvATSXUiSAxYYou8eI"; // ⚠️ exposed (restrict it)
 
 async function generate() {
   const prompt = document.getElementById("prompt").value;
