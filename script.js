@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyCwI3dcFDKUs0paUn79C4WJgzbpWgzXglo"; // public
+const API_KEY = "AIzaSyDLF7yKMcMwovjoLwWkWbiPCMu_4iOyY9U"; // ⚠️ exposed (restrict it)
 
 async function generate() {
   const prompt = document.getElementById("prompt").value;
@@ -20,7 +20,7 @@ Rules:
 
   try {
     const res = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=" + API_KEY,
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY,
       {
         method: "POST",
         headers: {
@@ -34,13 +34,16 @@ Rules:
 
     const data = await res.json();
 
-    let html = data.candidates?.[0]?.content?.parts?.text || "<h3>Error Generating...</h3>";
+    let html =
+      data.candidates?.[0]?.content?.parts?.[0]?.text || "<h3>Error generating page</h3>";
 
+    // Clean markdown fences if present
     html = html.replace(/```html|```/g, "");
 
     document.getElementById("code").innerText = html;
     document.getElementById("preview").srcdoc = html;
 
-} catch(error) {document.getElementById("code").innerText = "ERROR"; }
-
+  } catch (error) {
+    document.getElementById("code").innerText = "Error: " + error.message;
+  }
 }
